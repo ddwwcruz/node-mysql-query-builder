@@ -2,14 +2,13 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "allowJs": true,
     "outDir": "build",
+    "declaration": true,
     "declarationDir": "typings",
     "inlineSourceMap": true,
     "pretty": true
   },
   "include": [
-    "src/**/*.ts",
-    "Src/**/*.js"
+    "src/**/*.ts"
   ]
 }
