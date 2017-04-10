@@ -18,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/ddwwcruz/node-mysql-query-builder/issues"
   },
-  "homepage": "https://github.com/ddwwcruz/node-mysql-query-builder#readme"
+  "homepage": "https://github.com/ddwwcruz/node-mysql-query-builder#readme",
+  "dependencies": {
+    "mysql": "^2.13.0"
+  },
+  "devDependencies": {
+    "@types/mysql": "^0.0.31",
+    "@types/node": "^7.0.12",
+    "typescript": "^2.2.2"
+  }
 }
