@@ -1,7 +1,7 @@
 import { connect } from 'tls';
 import { IConnection } from 'mysql'
 
-export function selectPromise<T>(con: IConnection, query: string) {
+export async function selectPromise<T>(con: IConnection, query: string) {
     return new Promise<T[]>((resolve, reject) => {
         con.query(query, (err, results) => {
             if (err) reject(err)
@@ -10,7 +10,7 @@ export function selectPromise<T>(con: IConnection, query: string) {
     })
 }
 
-export function insertPromise(con: IConnection, query: string) {
+export async function insertPromise(con: IConnection, query: string) {
     return new Promise<number>((resolve, reject) => {
         con.query(query, (error, results) => {
             if (error) reject(error)
@@ -19,7 +19,7 @@ export function insertPromise(con: IConnection, query: string) {
     })
 }
 
-export function countPromise(con: IConnection, query: string) {
+export async function countPromise(con: IConnection, query: string) {
     return new Promise<number>((resolve, reject) => {
         con.query(query, (error, results) => {
             if (error) reject(error)
@@ -28,7 +28,7 @@ export function countPromise(con: IConnection, query: string) {
     })
 }
 
-export function updatePromise(con: IConnection, query: string) {
+export async function updatePromise(con: IConnection, query: string) {
     return new Promise<{
         affected: number,
         changed: number
@@ -43,7 +43,7 @@ export function updatePromise(con: IConnection, query: string) {
     })
 }
 
-export function deletePromise(con: IConnection, query: string) {
+export async function deletePromise(con: IConnection, query: string) {
     return new Promise<number>((resolve, reject) => {
         con.query(query, (error, results) => {
             if (error) reject(error)
