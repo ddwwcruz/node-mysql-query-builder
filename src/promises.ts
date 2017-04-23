@@ -3,8 +3,8 @@ import { IConnection } from 'mysql'
 
 export async function selectPromise<T>(con: IConnection, query: string) {
     return new Promise<T[]>((resolve, reject) => {
-        con.query(query, (err, results) => {
-            if (err) reject(err)
+        con.query(query, (error, results) => {
+            if (error) reject(error)
             else resolve(results)
         })
     })
