@@ -10,6 +10,7 @@ export default class Select<T> extends Query<T> {
 
     constructor(protected con: IConnection, protected table: string) {
         super()
+        this.columns()
     }
 
     columns(...cols: string[]) {
