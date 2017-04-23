@@ -61,4 +61,8 @@ export default class DB {
     delete(table: string) {
         return new Delete<any>(this.connection, table)
     }
+
+    close() {
+        this.connection.end()
+    }
 }
