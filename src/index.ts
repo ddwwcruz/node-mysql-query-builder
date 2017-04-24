@@ -1,8 +1,13 @@
+import * as querystring from 'querystring';
 import {
     createConnection,
     IConnectionConfig,
-    IConnection
+    IConnection,
+    escape
 } from 'mysql'
+import {
+    sprintf
+} from 'sprintf'
 
 import View from './view'
 import Table from './table'
@@ -41,6 +46,18 @@ export default class DB {
             this.connection,
             name
         )
+    }
+
+    async query(queryString: string, ...params: (string | number)[]) {
+        var escapedParams = params.map((v) => escape(v))
+        var query = sprintf(queryString, ...escapedParams)
+
+        return new Promise<any>((resolve, reject) => {
+            this.connection.query(query, (error, results) => {
+                if (error) reject({ error, query })
+                else resolve(results)
+            })
+        })
     }
 
     select(table: string) {
