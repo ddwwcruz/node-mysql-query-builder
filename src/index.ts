@@ -1,8 +1,13 @@
+import * as querystring from 'querystring';
 import {
     createConnection,
     IConnectionConfig,
-    IConnection
+    IConnection,
+    escape
 } from 'mysql'
+import {
+    sprintf
+} from 'sprintf'
 
 import View from './view'
 import Table from './table'
@@ -12,6 +17,7 @@ import Count from './count'
 import Insert from './insert'
 import Update from './update'
 import Delete from './delete'
+import * as __Filters from './filters'
 
 const connections: IConnection[] = []
 
@@ -21,11 +27,14 @@ export function closeConnections() {
     })
 }
 
+export const Filters = __Filters
+
 export default class DB {
     protected connection: IConnection
 
     constructor(config: IConnectionConfig) {
         this.connection = createConnection(config)
+        connections.push(this.connection)
     }
 
     createView<TableConf>(name: string): View<TableConf> {
@@ -40,6 +49,18 @@ export default class DB {
             this.connection,
             name
         )
+    }
+
+    async query(queryString: string, ...params: (string | number)[]) {
+        var escapedParams = params.map((v) => escape(v))
+        var query = sprintf(queryString, ...escapedParams)
+
+        return new Promise<any[]>((resolve, reject) => {
+            this.connection.query(query, (error, results) => {
+                if (error) reject({ error, query })
+                else resolve(results)
+            })
+        })
     }
 
     select(table: string) {
