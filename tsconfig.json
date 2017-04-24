@@ -4,6 +4,7 @@
     "module": "commonjs",
     "outDir": "build",
     "declaration": true,
+    "diagnostics": true,
     "declarationDir": "typings",
     "inlineSourceMap": true,
     "pretty": true
