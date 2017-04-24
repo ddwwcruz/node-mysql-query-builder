@@ -17,6 +17,7 @@ import Count from './count'
 import Insert from './insert'
 import Update from './update'
 import Delete from './delete'
+import * as __Filters from './filters'
 
 const connections: IConnection[] = []
 
@@ -25,6 +26,8 @@ export function closeConnections() {
         connection.end()
     })
 }
+
+export const Filters = __Filters
 
 export default class DB {
     protected connection: IConnection
