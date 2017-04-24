@@ -52,7 +52,7 @@ export default class DB {
         var escapedParams = params.map((v) => escape(v))
         var query = sprintf(queryString, ...escapedParams)
 
-        return new Promise<any>((resolve, reject) => {
+        return new Promise<any[]>((resolve, reject) => {
             this.connection.query(query, (error, results) => {
                 if (error) reject({ error, query })
                 else resolve(results)
