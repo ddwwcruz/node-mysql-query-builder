@@ -26,6 +26,7 @@ export default class DB {
 
     constructor(config: IConnectionConfig) {
         this.connection = createConnection(config)
+        connections.push(this.connection)
     }
 
     createView<TableConf>(name: string): View<TableConf> {
