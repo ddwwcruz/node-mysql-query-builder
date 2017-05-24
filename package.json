@@ -31,9 +31,9 @@
     "sprintf": "^0.1.5"
   },
   "devDependencies": {
-    "@types/mysql": "^0.0.31",
-    "@types/node": "^7.0.12",
+    "@types/mysql": "^0.0.33",
+    "@types/node": "^7.0.22",
     "@types/sprintf": "^0.0.28",
-    "typescript": "^2.2.2"
+    "typescript": "^2.3.3"
   }
 }
