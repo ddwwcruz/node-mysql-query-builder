@@ -1,4 +1,3 @@
-import * as querystring from 'querystring';
 import {
     createConnection,
     IConnectionConfig,
